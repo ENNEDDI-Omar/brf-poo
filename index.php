@@ -37,14 +37,7 @@ require'controller/auth/check-registre.php';
 				</form>
 			</div>
 
-			<div class="login" >
-				<form method="post" action="" >
-					<label for="chk" aria-hidden="true">Login</label>
-					<input type="email" name="email" placeholder="Email" required="">
-					<input type="password" name="pswd" placeholder="Password" required="">
-					<button type="submit" name="submit-in" >Login</button>
-				</form>
-			</div>
+		
 	</div>
 </body>
 </html>

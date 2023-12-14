@@ -44,8 +44,6 @@ $dotenv->load();
         if ($conx->connect_error) {
             die('erreur de connexion');
             
-        }else {
-            echo'Connecté';
         }
         return $conx;
     }

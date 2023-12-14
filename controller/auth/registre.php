@@ -2,12 +2,8 @@
 // require __DIR__ .'/../../config/connexion.php';
 require __DIR__ .'/../../model/user.php';
 
- session_start();
 
-
-
-
-   if(isset($_POST['submit'])) {
+   if(isset($_POST['submit-up'])) {
     
    
     $username=$_POST['Name'];
@@ -16,20 +12,23 @@ require __DIR__ .'/../../model/user.php';
     $c_pwd=$_POST['c_Pwd'];
     $profil=$_FILES['Profil']['name'];
     $temp_name=$_FILES['Profil']['tmp_name'];
-    $folder="assets/images/".$profil;
-    $role=$_POST['Roles'];
+    $folder="../../assets/images/".$profil;
+    $role="student";
 
-    if (empty($username) || empty($email) || empty($pwd) || empty($c_pwd) || empty($folder)) {
+    if (empty($username) || empty($email) || empty($pwd) || empty($c_pwd)) {
         echo'all Fields are required';
     }else{
-        $user = new User($username, $email, $pwd, $c_pwd, $folder);
-        $emailrep = $User->getUserbyEmail();
+        $user = new User($username, $email, $pwd, $folder, $role);
+        $emailrep = $user->getUserbyEmail();
         if ($emailrep) 
         {
             echo'email already exist';
         }else {
+            move_uploaded_file($temp_name, $folder);
             $user->Create();
-            header('location:../../index.php');
+            header('location:../../vue/auth/login.php');
+            exit();
+            
         }
     }
         
