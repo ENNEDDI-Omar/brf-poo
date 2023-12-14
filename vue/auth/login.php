@@ -1,5 +1,5 @@
 <?php
-require'../../controller/auth/login.php';
+require __DIR__ .'/../../controller/auth/login.php';
 
 ?>
 
